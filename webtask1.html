@@ -1,0 +1,244 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href=style.css>
+    
+  
+<script>
+window.addEventListener("DOMContentLoaded", function(){
+
+
+var k=[];
+if(localStorage.getItem('pkey')!==null)
+k=JSON.parse(localStorage.getItem('pkey'));
+
+var list = document.getElementById("notes");
+   
+  
+   for (var i = 0; i < (localStorage.length)-1; i++){
+    
+
+     
+     if(localStorage.key(i)!== -1)
+      {   
+        if(localStorage.getItem(i)!=0)
+      
+       
+       {var item = document.createElement("li");
+
+       item.textContent = localStorage.getItem(i);
+       //if(k[i]=="s1")
+        //item.setAttribute("i", "demo1");
+       //if(k[i]=="s2")
+        item.setAttribute("class", "demo2");
+       //if(k[i]=="s3")
+        //item.setAttribute("i", "demo3");
+       
+
+       list.appendChild(item);
+
+      
+      }
+      
+      
+     
+     }
+   
+   }
+
+   
+   var btn = document.getElementById("q");
+   var note = document.getElementById("textin");
+  var btn2=document.getElementById("w");
+ var btn3 = document.getElementById("e");
+  var btn4 = document.getElementById("r");
+   var noteCount = 1;
+var text=document.getElementById("textin");
+var pri=document.getElementById("p");
+var prie=document.getElementById("p");
+var btn5 = document.getElementById("t");
+   
+   btn.addEventListener("click", function(){
+     
+    var c;
+    
+
+    if(localStorage.length==0)
+    c=0;
+    else
+    c=(localStorage.length)-1;
+    
+    var noteVal = note.value;
+    k.push(pri.value);
+   
+   if(noteVal.trim() !== ""){
+           localStorage.setItem('pkey',JSON.stringify(k));
+          localStorage.setItem(c, noteVal);
+          
+          var lstItem = document.createElement("li");
+          lstItem.textContent = noteVal;
+          
+           //if(pri.value=="s1")
+            //lstItem.setAttribute("class", "demo1");
+           //else
+            //if(pri.value=="s2")
+            lstItem.setAttribute("class", "demo2");
+          //else
+            //if(pri.value=="s3")
+            //lstItem.setAttribute("class", "demo3");
+           
+
+           list.appendChild(lstItem);
+      
+       
+     }
+  
+   });
+ btn2.addEventListener("click", function(){ 
+
+  while(list.hasChildNodes())
+    {
+      list.removeChild(list.firstChild);
+       
+    } 
+    
+window.localStorage.clear();
+noteCount=1;
+
+});
+
+btn3.addEventListener("click", function()
+{ 
+  var ednum=prompt("Please enter the index of the note that you want to edit");
+  if(k[ednum-1]=="s3")
+    var check=prompt("The priority of the note u selected is HIGH, do u wanna change it? (y/n)");
+  if(k[ednum-1]=="s2")
+    var check=prompt("The priority of the note u selected is MODERATE do u wanna change it? (y/n)");
+  if(k[ednum-1]=="s1")
+    var check=prompt("The priority of the note u selected is LOW do u wanna change it? (y/n)");
+   var t=text.value;
+   if(ednum!=null)
+   {var po=prie.value;
+   if(t=="")
+    alert("please enter your edited note in the textarea and click EDIT NOTES");
+    else{
+    var ele=document.createElement("li");
+    ele.textContent = t;
+    ele.setAttribute("class","demo2");
+    list.replaceChild(ele, list.childNodes[ednum-1]);
+
+    localStorage.setItem((ednum-1),t);
+    if(check=="y")
+    {
+    k[ednum-1]=po;
+    localStorage.setItem('pkey',JSON.stringify(k));
+    }
+
+alert("the pri after edit "+k);
+  }
+
+
+}
+
+
+alert("the pri no edit "+k);
+     
+  
+ });
+btn4.addEventListener("click", function()
+  {var ednum1=prompt("Please enter the index of the note that you want to delete");
+  list.removeChild(list.childNodes[ednum1-1]);
+  localStorage.setItem((ednum1-1),0);
+  
+  k.splice((ednum1-1),1);
+  localStorage.setItem('pkey',JSON.stringify(k));
+  
+
+
+ });
+
+btn5.addEventListener("click", function(){
+
+  while(list.hasChildNodes())
+    {
+      list.removeChild(list.firstChild);
+       
+    } 
+
+  
+  var temp;
+  for(var t=0;t<k.length-1;t++)
+  {
+    for(var f=0;f<k.length-1;f++)
+    {
+        if(k[f+1]>k[f])
+        {
+          temp = k[f + 1];
+        k[f + 1] = k[f];
+        k[f] = temp;
+        
+        temp=localStorage.getItem(f+1);
+        localStorage.setItem(f+1,localStorage.getItem(f));
+        localStorage.setItem(f,temp);
+        }
+    }
+  }
+localStorage.setItem("pkey",JSON.stringify(k));
+
+
+for (var i = 0; i < (localStorage.length)-1; i++){
+    
+
+     
+     if(localStorage.key(i)!== -1)
+      {   
+        if(localStorage.getItem(i)!=0)
+      
+       
+       {var item = document.createElement("li");
+
+       item.textContent = localStorage.getItem(i);
+       //if(k[i]=="s1")
+        //item.setAttribute("i", "demo1");
+       //if(k[i]=="s2")
+        item.setAttribute("class", "demo2");
+       //if(k[i]=="s3")
+        //item.setAttribute("i", "demo3");
+       
+
+       list.appendChild(item);
+
+      
+      }
+      
+      
+     
+     }
+   
+   }
+
+});
+
+
+});
+
+</script>
+<body>
+       <textarea placeholder="ENTER YOUR NOTES:" rows="4" columns="50" id=textin></textarea>
+       <select id=p placeholder="set priority" >
+         <option value="s1">LOW</option>
+         <option value="s2">MODERATE</option>
+        <option value="s3">HIGH</option>
+       </select>
+       
+       <input type=button class="first" value="Save Note" id=q>
+      <input type=button class="second" value="Clear All" id=w>
+      <input type=button class="third" value="Edit Notes" id=e>
+      <input type=button class="fourth" value="Delete Notes" id=r>
+      <input type=button class="fifth" value="Sort Notes" id=t>
+
+
+<ol id=notes></ol>
+</body>
+</head>
+</html>

@@ -1,0 +1,93 @@
+section{
+	font-family: 'Droid Sans', sans-serif;
+}
+
+.demo2 {
+  padding: 14px 100px;
+    text-align:center;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  background-color: red;
+  width: 1200px;
+}
+
+li {
+         text-align: center;
+         padding : 5px;
+         }
+
+body {
+  background-image:url('im.jpg');
+}
+
+textarea{
+	width: 600px;
+	height: 70px;
+	border: none;
+	border-radius:4px;
+	padding: 50px;
+	font-family: Tahoma, sans-serif;
+    margin-top: 70px;
+    margin-left: 25%;
+	background-color: white;
+
+	background-repeat: no-repeat;
+}
+ .first {
+    width: 10%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin-top:65px;
+    margin-left: 25%;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.second{
+
+width: 10%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin-top:65px;
+    margin-left: 25%;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.third {
+    width: 10%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin-top:60px;
+    margin-left: 25%;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.fourth {
+    width: 10%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin-top:6px;
+    margin-left: 25%;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.fifth {position:absolute;
+   
+    width: 10%;
+    background-color: #4CAF50;
+    color: white;
+    top:4%;
+    left:43%;
+    padding: 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
